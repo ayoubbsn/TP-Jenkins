@@ -20,7 +20,12 @@ pipeline {
         }
       }
     }
+<<<<<<< HEAD
 /*
+=======
+    
+
+>>>>>>> dbf63ebe9d98dfd3e7e56f5ec69a69c05025b4cb
     stage("Code Quality") {
       steps {
           waitForQualityGate abortPipeline: true
