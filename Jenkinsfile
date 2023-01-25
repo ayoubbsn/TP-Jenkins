@@ -4,7 +4,7 @@ pipeline {
 
     stage('test'){
         steps{
-          bat 'gradle test'
+          bat 'gradlew test'
           archiveArtifacts 'build/test-results/'
           cucumber reportTitle: 'Report',
                    fileIncludePattern: 'target/report.json',
@@ -16,7 +16,7 @@ pipeline {
     stage ('Code Analysis') {
       steps{
         withSonarQubeEnv('sonar') {
-          bat "gradle sonarqube"
+          bat "gradlew sonarqube"
         }
       }
     }
@@ -29,8 +29,8 @@ pipeline {
 
     stage('Build') {
       steps {
-          bat "gradle build"
-          bat "gradle javadoc"
+          bat "gradlew build"
+          bat "gradlew javadoc"
           archiveArtifacts 'build/libs/*.jar'
           archiveArtifacts 'build/docs/'
       }
@@ -39,7 +39,7 @@ pipeline {
 
     stage("Deploy") {
       steps {
-          bat "gradle publish"
+          bat "gradlew publish"
       }
     }
 
