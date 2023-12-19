@@ -2,11 +2,7 @@ pipeline {
   agent any
   stages {
 
-    stage("Notification") {
-          steps {
-              notifyEvents message: 'Build Started', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
-          }
-    }
+
 
     stage('test'){
         steps{
@@ -64,5 +60,6 @@ pipeline {
       }
     }
 }
+
 
 }
