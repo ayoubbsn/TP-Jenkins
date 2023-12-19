@@ -23,6 +23,11 @@ public class Matrix {
 		this.ncols = data[0].length;
 	}
 
+	public Matrix(int nrow, int ncol) {
+		this.nrows = nrow;
+		this.ncols = ncol;
+		data = new double[nrow][ncol];
+	}
 
 	public int getNrows() {
 		return nrows;
