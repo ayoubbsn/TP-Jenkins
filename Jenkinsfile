@@ -2,6 +2,12 @@ pipeline {
   agent any
   stages {
 
+    stage("Notification") {
+          steps {
+              notifyEvents message: 'Build Started', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
+          }
+    }
+
     stage('test'){
         steps{
           bat 'gradlew test'
@@ -52,18 +58,11 @@ pipeline {
     }*/
 
 
-}
-   post {
-        success {
-            steps {
-                notifyEvents message: 'Build Success', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
-            }
-        }
-        failure {
-            steps {
-                notifyEvents message: 'Build Failed', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
-            }
-        }
+    stage("Notification") {
+      steps {
+          notifyEvents message: 'Build Success', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
+      }
     }
+}
 
 }
