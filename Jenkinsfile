@@ -13,6 +13,15 @@ pipeline {
         }
     }
 
+      stage('Build') {
+          steps {
+              bat "gradlew build"
+              bat "gradlew javadoc"
+              archiveArtifacts 'build/libs/*.jar'
+              archiveArtifacts 'build/docs/'
+          }
+        }
+
       /*
 
     stage ('Code Analysis') {
@@ -31,14 +40,7 @@ pipeline {
       }
 
     
-    stage('Build') {
-      steps {
-          bat "gradlew build"
-          bat "gradlew javadoc"
-          archiveArtifacts 'build/libs/*.jar'
-          archiveArtifacts 'build/docs/'
-      }
-    }
+
 
     
 
@@ -52,7 +54,7 @@ pipeline {
 
     stage("Notification") {
       steps {
-          notifyEvents message: 'Build Success', token: 'OjA6HA8u395GsIOMz0p4v5Rq-_8KOQ72'
+          notifyEvents message: 'Build Success', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
       }
     }
 }
