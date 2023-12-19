@@ -1,5 +1,9 @@
 package com.example.model;
 
+import com.example.exception.NoSquareException;
+
+import static com.example.service.MatrixMathematics.*;
+
 public class Matrix {
 
 	private int nrows;
@@ -77,10 +81,6 @@ public class Matrix {
 	}
 
 	@Override
-	public int hashCode(){
-		return nrows*ncols;
-	}
-	@Override
 	public boolean equals(Object obj) {
 		if(this == obj) {
 			return true;
@@ -99,8 +99,22 @@ public class Matrix {
 		}
 
 
+
 	return  true;
 
+	}
+	@Override
+	public int hashCode(){
+		return nrows*ncols;
+	}
+
+
+	public static Matrix inverse(Matrix matrix) throws NoSquareException {
+		double divider = 1;
+		divider = determinant(matrix);
+		if (divider!=0){
+			return (transpose(cofactor(matrix)).multiplyByConstant(1.0/divider));}
+		else return matrix;
 	}
 
 }
