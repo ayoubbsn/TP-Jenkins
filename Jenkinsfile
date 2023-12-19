@@ -52,11 +52,18 @@ pipeline {
     }*/
 
 
-    stage("Notification") {
-      steps {
-          notifyEvents message: 'Build Success', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
-      }
-    }
 }
+   post {
+        success {
+            steps {
+                notifyEvents message: 'Build Success', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
+            }
+        }
+        failure {
+            steps {
+                notifyEvents message: 'Build Failed', token: 'xetr1vcbig3yobfxhs5g_zzvtw60bnge'
+            }
+        }
+    }
 
 }
