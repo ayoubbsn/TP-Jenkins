@@ -23,7 +23,23 @@ public class Matrix {
 		this.ncols = data[0].length;
 	}
 
+	public Matrix(int nrow, int ncol) {
+		this.nrows = nrow;
+		this.ncols = ncol;
+		data = new double[nrow][ncol];
+	}
 
+	public int getNrows() {
+		return nrows;
+	}
+
+	public void setNrows(int nrows) {
+		this.nrows = nrows;
+	}
+
+	public int getNcols() {
+		return ncols;
+	}
 
 	public void setNcols(int ncols) {
 		this.ncols = ncols;
