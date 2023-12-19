@@ -13,6 +13,8 @@ pipeline {
         }
     }
 
+      /*
+
     stage ('Code Analysis') {
       steps{
         withSonarQubeEnv('sonar') {
@@ -21,13 +23,12 @@ pipeline {
       }
     }
 
-    /*
+
     
     stage("Code Quality") {
       steps {
           waitForQualityGate abortPipeline: true
       }
-    }*/
 
     
     stage('Build') {
@@ -38,6 +39,7 @@ pipeline {
           archiveArtifacts 'build/docs/'
       }
     }
+
     
 
     stage("Deploy") {
@@ -45,6 +47,8 @@ pipeline {
           bat "gradlew publish"
       }
     }
+    }*/
+
 
     stage("Notification") {
       steps {
