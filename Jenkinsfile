@@ -60,6 +60,9 @@ pipeline {
         failure {
             mail bcc: '', body: '''Error !!''', cc: '', from: '', replyTo: '', subject: 'Pipleline failiure', to: 'ja_bousnane@esi.dz'
         }
+        success {
+                mail bcc: '', body: 'Success !!', cc: '', from: '', replyTo: '', subject: 'Pipeline success', to: 'ja_bousnane@esi.dz'
+        }
   }
 
 }
